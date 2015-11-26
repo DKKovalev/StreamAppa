@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Assets.Models;
+package com.moodappinc.streamappa.Assets.Models.Twitch;
 
 
 import java.util.List;

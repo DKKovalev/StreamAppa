@@ -1,10 +1,9 @@
 package com.moodappinc.streamappa.Assets;
 
 
-import com.moodappinc.streamappa.Assets.Models.ChannelModel;
-import com.moodappinc.streamappa.Assets.Models.GamesModel;
-import com.moodappinc.streamappa.Assets.Models.TokenModel;
-import com.moodappinc.streamappa.Assets.Models.TopChannelsModel;
+import com.moodappinc.streamappa.Assets.Models.Twitch.ChannelModel;
+import com.moodappinc.streamappa.Assets.Models.Twitch.TokenModel;
+import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -14,15 +13,19 @@ import retrofit.http.Query;
 
 public interface RESTMethods {
     @GET("/streams/{channel}")
-    void getChannel(@Path("channel") String channel, Callback<ChannelModel> channelModelCallback);
+    void twitchGetChannel(@Path("channel") String channel, Callback<ChannelModel> channelModelCallback);
+
     @GET("/channels/{channel}/access_token")
-    void getToken(@Path("channel") String channel, Callback<TokenModel> tokenModelCallback);
+    void twitchGetToken(@Path("channel") String channel, Callback<TokenModel> tokenModelCallback);
+
     @GET("/games/top")
-    void getTop(@Query("limit") int limit, Callback<TopChannelsModel> topChannelsModelCallback);
+    void twitchGetTop(@Query("limit") int limit, Callback<TopChannelsModel> topChannelsModelCallback);
+
     @GET("/streams")
-    void getChannelsByGame(@Query("game") String game, Callback<GamesModel> gamesModelCallback);
+    void twitchGetChannelsByGame(@Query("game") String game, Callback<com.moodappinc.streamappa.Assets.Models.Twitch.GamesModel> gamesModelCallback);
+
     @GET("/channel/hls/{channel}.m3u8")
-    void getStream(@Path("channel") String channel
+    void twitchGetStream(@Path("channel") String channel
             , @Query("player") String player
             , @Query("token") String token
             , @Query("sig") String sig
@@ -30,4 +33,7 @@ public interface RESTMethods {
             , @Query("allow_source") String allowSource, @Query("type") String type
             , @Query("p") int randomInt
             , Callback<Response> streamCallback);
+
+    @GET("/games")
+    void hitboxGetGames(Callback<com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel> gamesModelCallback);
 }

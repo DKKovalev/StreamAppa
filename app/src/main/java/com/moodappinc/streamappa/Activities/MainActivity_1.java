@@ -85,5 +85,10 @@ public class MainActivity_1 extends AppCompatActivity {
             fragments.add(fragment);
             titles.add(title);
         }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return titles.get(position);
+        }
     }
 }

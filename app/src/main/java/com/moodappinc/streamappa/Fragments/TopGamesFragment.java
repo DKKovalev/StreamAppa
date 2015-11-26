@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moodappinc.streamappa.R;
-
 public class TopGamesFragment extends Fragment {
 
     private RecyclerView recyclerView;

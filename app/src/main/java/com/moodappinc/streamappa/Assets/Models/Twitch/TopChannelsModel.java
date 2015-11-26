@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Assets.Models;
+package com.moodappinc.streamappa.Assets.Models.Twitch;
 
 
 import java.util.List;
@@ -92,4 +92,5 @@ public class TopChannelsModel {
             this.small = small;
         }
     }
+
 }
