@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
 import com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel;
@@ -23,7 +24,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class HitboxTab extends Fragment {
+public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
 
     private RecyclerView recyclerView;
     private CustomRecyclerAdapter customRecyclerAdapter;
@@ -76,6 +77,7 @@ public class HitboxTab extends Fragment {
                 topList = gamesModel.getCategories();
                 customRecyclerAdapter = new CustomRecyclerAdapter(null, topList, getActivity());
                 recyclerView.setAdapter(customRecyclerAdapter);
+                customRecyclerAdapter.setOnRecyclerItemClicker(HitboxTab.this);
             }
 
             @Override
@@ -83,5 +85,12 @@ public class HitboxTab extends Fragment {
                 Log.e("TAGGERINO", error.getCause().toString());
             }
         });
+    }
+
+    @Override
+    public void itemClicked(View view, int pos) {
+
+        String gameTitle = topList.get(pos).getCategory_name();
+        Toast.makeText(getActivity(), gameTitle, Toast.LENGTH_LONG).show();
     }
 }

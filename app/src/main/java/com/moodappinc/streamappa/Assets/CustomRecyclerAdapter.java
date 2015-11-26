@@ -20,6 +20,8 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
     private List<TopChannelsModel.Top> twitchTopList;
     private List<GamesModel.Categories> hitboxGamesList;
 
+    private OnRecyclerItemClicker onRecyclerItemClicker;
+
     private Context context;
 
     public CustomRecyclerAdapter(List<TopChannelsModel.Top> topList, List<GamesModel.Categories> hitboxGamesList, Context context) {
@@ -59,6 +61,10 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
         } else return twitchTopList.size();
     }
 
+    public void setOnRecyclerItemClicker(OnRecyclerItemClicker onRecyclerItemClicker){
+        this.onRecyclerItemClicker = onRecyclerItemClicker;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Context context;
@@ -66,13 +72,20 @@ public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAd
 
         public ViewHolder(View itemView, Context context) {
             super(itemView);
+            itemView.setOnClickListener(this);
             thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
             this.context = context;
         }
 
         @Override
         public void onClick(View v) {
-
+            if (onRecyclerItemClicker != null) {
+                onRecyclerItemClicker.itemClicked(v, getAdapterPosition());
+            }
         }
+    }
+
+    public interface OnRecyclerItemClicker {
+        void itemClicked(View view, int pos);
     }
 }
