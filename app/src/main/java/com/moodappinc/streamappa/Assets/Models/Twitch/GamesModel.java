@@ -5,18 +5,18 @@ import java.util.List;
 
 public class GamesModel {
 
-    private List<Streams> streamsList;
+    private List<Streams> streams;
 
     public GamesModel(List<Streams> streamsList) {
-        this.streamsList = streamsList;
+        this.streams = streamsList;
     }
 
-    public List<Streams> getStreamsList() {
-        return streamsList;
+    public List<Streams> getStreams() {
+        return streams;
     }
 
-    public void setStreamsList(List<Streams> streamsList) {
-        this.streamsList = streamsList;
+    public void setStreams(List<Streams> streams) {
+        this.streams = streams;
     }
 
     public class Streams {

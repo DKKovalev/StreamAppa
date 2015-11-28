@@ -5,16 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
-import com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel;
-import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
+import com.moodappinc.streamappa.Assets.Models.Twitch.GamesModel;
 import com.moodappinc.streamappa.Assets.RESTHandler;
 import com.moodappinc.streamappa.Assets.RESTMethods;
 import com.moodappinc.streamappa.R;
@@ -26,14 +23,15 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
+public class TwitchTopChannels extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
 
+    private RESTHandler restHandler;
     private RecyclerView recyclerView;
     private CustomRecyclerAdapter customRecyclerAdapter;
-    private RESTHandler restHandler;
-    private List<HitboxLiveStreams.Livestream> topList;
 
-    public HitboxTab() {
+    private List<GamesModel.Streams> streamsList;
+
+    public TwitchTopChannels() {
         // Required empty public constructor
     }
 
@@ -42,19 +40,20 @@ public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         restHandler = new RESTHandler();
-        topList = new ArrayList<>();
+        streamsList = new ArrayList<>();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hitbox_tab, container, false);
+        View view = inflater.inflate(R.layout.fragment_twitch_top_channels, container, false);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView = (RecyclerView) view.findViewById(R.id.hitbox_recycler_view);
+        recyclerView = (RecyclerView)view.findViewById(R.id.twitch_top_recycler_view);
         recyclerView.setLayoutManager(layoutManager);
 
-        getTop();
+        String game  = getArguments().getString("twitch_game_title");
+        getChannelsByGame(game);
 
         return view;
     }
@@ -63,28 +62,30 @@ public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+
     }
 
-    private void getTop() {
-
-        RESTMethods restMethods = restHandler.setupRest(getString(R.string.hitbox_api_url)).create(RESTMethods.class);
-        restMethods.hitboxGetGames(new Callback<HitboxLiveStreams>() {
+    private void getChannelsByGame(String game) {
+        RESTMethods restMethods = restHandler.setupRest(getString(R.string.twitch_kraken_url)).create(RESTMethods.class);
+        restMethods.twitchGetChannelsByGame(game, new Callback<GamesModel>() {
             @Override
-            public void success(HitboxLiveStreams hitboxLiveStreams, Response response) {
-                topList = hitboxLiveStreams.getLivestream();
-                customRecyclerAdapter = new CustomRecyclerAdapter(null, topList, null, getActivity());
+            public void success(GamesModel gamesModel, Response response) {
+                streamsList = gamesModel.getStreams();
+
+                customRecyclerAdapter = new CustomRecyclerAdapter(null, null, streamsList, getActivity());
+                customRecyclerAdapter.setOnRecyclerItemClicker(TwitchTopChannels.this);
                 recyclerView.setAdapter(customRecyclerAdapter);
-                customRecyclerAdapter.setOnRecyclerItemClicker(HitboxTab.this);
+
             }
 
             @Override
             public void failure(RetrofitError error) {
-                Log.e("TAGGERINO", error.getCause().toString());
             }
         });
     }
@@ -92,7 +93,5 @@ public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
     @Override
     public void itemClicked(View view, int pos) {
 
-        String channelTitle = topList.get(pos).getMedia_user_name();
-        Toast.makeText(getActivity(), channelTitle, Toast.LENGTH_LONG).show();
     }
 }

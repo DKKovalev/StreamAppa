@@ -1,6 +1,7 @@
 package com.moodappinc.streamappa.Assets;
 
 
+import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
 import com.moodappinc.streamappa.Assets.Models.Twitch.ChannelModel;
 import com.moodappinc.streamappa.Assets.Models.Twitch.TokenModel;
 import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
@@ -34,6 +35,6 @@ public interface RESTMethods {
             , @Query("p") int randomInt
             , Callback<Response> streamCallback);
 
-    @GET("/games")
-    void hitboxGetGames(Callback<com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel> gamesModelCallback);
+    @GET("/media/live/list")
+    void hitboxGetGames(Callback<HitboxLiveStreams> gamesModelCallback);
 }

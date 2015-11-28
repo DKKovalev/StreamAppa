@@ -41,17 +41,6 @@ public class MainActivity_1 extends AppCompatActivity {
 
         tabLayout = (TabLayout)findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-
-
-        /*fragmentManager = getSupportFragmentManager();
-        fragment = fragmentManager.findFragmentById();
-        if (fragment == null) {
-            fragment = new Fragment();
-            fragmentManager.beginTransaction()
-                    .add()
-                    .commit();
-        }*/
     }
 
     private void setupViewPager(ViewPager viewPager){
@@ -65,7 +54,6 @@ public class MainActivity_1 extends AppCompatActivity {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> titles = new ArrayList<>();
-
 
         public ViewPagerAdapter(FragmentManager fm) {
             super(fm);

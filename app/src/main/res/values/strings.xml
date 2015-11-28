@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">StreamAppa</string>
-    
+
     <string name="twitch_kraken_url">https://api.twitch.tv/kraken/</string>
     <string name="twitch_base_api_url">http://api.twitch.tv/api/</string>
     <string name="twitch_stream_object_url">http://usher.twitch.tv/api</string>
 
     <string name="hitbox_api_url">https://api.hitbox.tv/</string>
     <string name="hitbox_resource_url">http://edge.sf.hitbox.tv/</string>
-    
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

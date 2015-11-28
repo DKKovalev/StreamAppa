@@ -33,21 +33,6 @@ public class RESTHandler {
         return restAdapter;
     }
 
-    public void getChannelsByGame(String game) {
-        RESTMethods restMethods = setupRest(TWITCH_BASE_KRAKEN_URL).create(RESTMethods.class);
-        restMethods.twitchGetChannelsByGame(game, new Callback<GamesModel>() {
-            @Override
-            public void success(GamesModel gamesModel, Response response) {
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        });
-    }
-
     public void getToken(String channel) {
         RESTMethods restMethods = setupRest(TWITCH_STREAM_TOKEN_URL).create(RESTMethods.class);
         restMethods.twitchGetToken(channel, new Callback<TokenModel>() {

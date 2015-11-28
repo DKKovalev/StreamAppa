@@ -1,6 +1,7 @@
 package com.moodappinc.streamappa.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
 import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
@@ -24,7 +26,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class TwitchTab extends Fragment {
+public class TwitchTab extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
 
     private RecyclerView recyclerView;
     private CustomRecyclerAdapter customRecyclerAdapter;
@@ -76,8 +78,9 @@ public class TwitchTab extends Fragment {
             public void success(TopChannelsModel topChannelsModel, Response response) {
 
                 topList = topChannelsModel.getTopList();
-                customRecyclerAdapter = new CustomRecyclerAdapter(topList, null, getActivity());
+                customRecyclerAdapter = new CustomRecyclerAdapter(topList, null, null, getActivity());
                 recyclerView.setAdapter(customRecyclerAdapter);
+                customRecyclerAdapter.setOnRecyclerItemClicker(TwitchTab.this);
             }
 
             @Override
@@ -85,5 +88,21 @@ public class TwitchTab extends Fragment {
                 Log.e("TAGGERINO", error.getCause().toString());
             }
         });
+    }
+
+    @Override
+    public void itemClicked(View view, int pos) {
+
+        Toast.makeText(getActivity(), "TAP", Toast.LENGTH_LONG).show();
+
+        String gameTitle = topList.get(pos).getGame().getName();
+
+        TwitchTopChannels twitchTopChannels = new TwitchTopChannels();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("twitch_game_title", gameTitle);
+        twitchTopChannels.setArguments(bundle);
+
+        this.getFragmentManager().beginTransaction().replace(R.id.viewpager, twitchTopChannels).addToBackStack(null).commit();
     }
 }
