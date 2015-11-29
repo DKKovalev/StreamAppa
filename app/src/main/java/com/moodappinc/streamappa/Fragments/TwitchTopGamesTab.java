@@ -1,7 +1,6 @@
 package com.moodappinc.streamappa.Fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -26,14 +25,14 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class TwitchTab extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
+public class TwitchTopGamesTab extends Fragment implements CustomRecyclerAdapter.OnRecyclerItemClicker {
 
     private RecyclerView recyclerView;
     private CustomRecyclerAdapter customRecyclerAdapter;
     private RESTHandler restHandler;
     private List<TopChannelsModel.Top> topList;
 
-    public TwitchTab() {
+    public TwitchTopGamesTab() {
         // Required empty public constructor
     }
 
@@ -49,7 +48,7 @@ public class TwitchTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_twitch_tab, container, false);
+        View view = inflater.inflate(R.layout.twitch_top_games_tab, container, false);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView = (RecyclerView) view.findViewById(R.id.twitch_recycler_view);
         recyclerView.setLayoutManager(layoutManager);
@@ -80,7 +79,7 @@ public class TwitchTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
                 topList = topChannelsModel.getTopList();
                 customRecyclerAdapter = new CustomRecyclerAdapter(topList, null, null, getActivity());
                 recyclerView.setAdapter(customRecyclerAdapter);
-                customRecyclerAdapter.setOnRecyclerItemClicker(TwitchTab.this);
+                customRecyclerAdapter.setOnRecyclerItemClicker(TwitchTopGamesTab.this);
             }
 
             @Override
@@ -103,6 +102,7 @@ public class TwitchTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
         bundle.putString("twitch_game_title", gameTitle);
         twitchTopChannels.setArguments(bundle);
 
-        this.getFragmentManager().beginTransaction().replace(R.id.viewpager, twitchTopChannels).addToBackStack(null).commit();
+        this.getFragmentManager().beginTransaction().replace(R.id.twitch_root_frame, twitchTopChannels).addToBackStack(null).commit();
+
     }
 }

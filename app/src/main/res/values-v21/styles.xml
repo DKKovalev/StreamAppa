@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CustomStreamappaTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:colorBackground">@color/background_material_light</item>
-        <item name="android:windowBackground">@color/tweed</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-    </style>
+    <style name="Theme.Material.Light.NoActionBar.NoActionBar" parent="android:Theme.Material.NoActionBar" />
 
-    <style name="CustomStreamAppaTheme" parent="@style/Theme.AppTheme.Light.NoActionBar">
-        <item name="android:windowActionBar">false</item>
+    <style name="CustomStreamAppaTheme" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:colorPrimary">@color/primary_material_light</item>
+        <item name="android:colorAccent">@color/accent_material_light</item>
         <item name="android:colorBackground">@color/background_material_light</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark_material_light</item>
+        <item name="android:textColorPrimaryInverse">@color/primary_text_material_dark</item>
+        <item name="android:textColorPrimary">@color/primary_text_material_light</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
     </style>
 </resources>

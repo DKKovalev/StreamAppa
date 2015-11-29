@@ -1,6 +1,7 @@
 package com.moodappinc.streamappa.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.moodappinc.streamappa.Activities.StreamPlayerActivity;
 import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
 import com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel;
 import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
@@ -93,6 +95,10 @@ public class HitboxTab extends Fragment implements CustomRecyclerAdapter.OnRecyc
     public void itemClicked(View view, int pos) {
 
         String channelTitle = topList.get(pos).getMedia_user_name();
+        Intent intent = new Intent(getActivity(), StreamPlayerActivity.class);
+        intent.putExtra("hitbox_game", getString(R.string.hitbox_api_url)+"player/hls/"+channelTitle+".m3u8");
+        intent.putExtra("stream_service_tag", "hitbox");
+        getActivity().startActivity(intent);
         Toast.makeText(getActivity(), channelTitle, Toast.LENGTH_LONG).show();
     }
 }
