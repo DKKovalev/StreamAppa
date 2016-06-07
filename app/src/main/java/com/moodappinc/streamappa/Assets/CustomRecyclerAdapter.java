@@ -19,6 +19,8 @@ import java.util.List;
 
 public class CustomRecyclerAdapter extends RecyclerView.Adapter<CustomRecyclerAdapter.ViewHolder> {
 
+    /*TODO Сделать интерфейс, который будет реализовывать общие методы. Затем его имплементировать в моделях и передавать лист интерфейсов*/
+
     private List<TopChannelsModel.Top> twitchTopList;
     private List<HitboxLiveStreams.Livestream> hitboxLiveStreams;
     private List<GamesModel.Streams> twitchGamesModels;
