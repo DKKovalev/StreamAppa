@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Fragments;
+package com.moodappinc.streamappa.OuterLevel.UI.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
-import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
+import com.moodappinc.streamappa.OuterLevel.UI.CustomRecyclerAdapter;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.TopChannelsModel;
 import com.moodappinc.streamappa.Assets.RESTHandler;
-import com.moodappinc.streamappa.Assets.RESTMethods;
+import com.moodappinc.streamappa.OuterLevel.Network.RESTMethods;
 import com.moodappinc.streamappa.R;
 
 import java.util.ArrayList;

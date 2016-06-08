@@ -1,30 +1,18 @@
-package com.moodappinc.streamappa.Activities;
+package com.moodappinc.streamappa.OuterLevel.UI.Activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
-import com.moodappinc.streamappa.Assets.Models.Twitch.TokenModel;
-import com.moodappinc.streamappa.Assets.RESTHandler;
-import com.moodappinc.streamappa.Assets.RESTMethods;
 import com.moodappinc.streamappa.R;
 
 import java.io.IOException;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class StreamPlayerActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 

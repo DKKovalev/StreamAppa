@@ -1,10 +1,10 @@
-package com.moodappinc.streamappa.Assets;
+package com.moodappinc.streamappa.OuterLevel.Network;
 
 
-import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
-import com.moodappinc.streamappa.Assets.Models.Twitch.ChannelModel;
-import com.moodappinc.streamappa.Assets.Models.Twitch.TokenModel;
-import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
+import com.moodappinc.streamappa.InnerLayer.Models.Hitbox.HitboxLiveStreams;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.ChannelModel;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.TokenModel;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.TopChannelsModel;
 
 import retrofit.Callback;
 import retrofit.client.Response;
@@ -23,7 +23,7 @@ public interface RESTMethods {
     void twitchGetTop(@Query("limit") int limit, Callback<TopChannelsModel> topChannelsModelCallback);
 
     @GET("/streams")
-    void twitchGetChannelsByGame(@Query("game") String game, Callback<com.moodappinc.streamappa.Assets.Models.Twitch.GamesModel> gamesModelCallback);
+    void twitchGetChannelsByGame(@Query("game") String game, Callback<com.moodappinc.streamappa.InnerLayer.Models.Twitch.GamesModel> gamesModelCallback);
 
     @GET("/channel/hls/{channel}.m3u8")
     void twitchGetStream(@Path("channel") String channel

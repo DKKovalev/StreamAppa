@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Fragments;
+package com.moodappinc.streamappa.OuterLevel.UI.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,19 +6,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.moodappinc.streamappa.Activities.StreamPlayerActivity;
-import com.moodappinc.streamappa.Assets.CustomRecyclerAdapter;
-import com.moodappinc.streamappa.Assets.Models.Hitbox.GamesModel;
-import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
+import com.moodappinc.streamappa.OuterLevel.UI.Activities.StreamPlayerActivity;
+import com.moodappinc.streamappa.OuterLevel.UI.CustomRecyclerAdapter;
+import com.moodappinc.streamappa.InnerLayer.Models.Hitbox.HitboxLiveStreams;
 import com.moodappinc.streamappa.Assets.RESTHandler;
-import com.moodappinc.streamappa.Assets.RESTMethods;
+import com.moodappinc.streamappa.OuterLevel.Network.RESTMethods;
 import com.moodappinc.streamappa.R;
 
 import java.util.ArrayList;

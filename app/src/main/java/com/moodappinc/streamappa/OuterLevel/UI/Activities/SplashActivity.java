@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Activities;
+package com.moodappinc.streamappa.OuterLevel.UI.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

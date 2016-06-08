@@ -2,6 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.HitboxTab"
+    tools:context=".OuterLevel.UI.Fragments.HitboxTab"
     android:id="@+id/twitch_root_frame">
 </FrameLayout>

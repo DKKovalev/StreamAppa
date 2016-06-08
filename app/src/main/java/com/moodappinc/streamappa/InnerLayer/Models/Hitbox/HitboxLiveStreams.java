@@ -1,4 +1,4 @@
-package com.moodappinc.streamappa.Assets.Models.Hitbox;
+package com.moodappinc.streamappa.InnerLayer.Models.Hitbox;
 
 
 import java.util.List;

@@ -1,17 +1,16 @@
-package com.moodappinc.streamappa.Assets;
+package com.moodappinc.streamappa.OuterLevel.UI;
 
 import android.content.Context;
 import android.net.Uri;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.moodappinc.streamappa.Assets.Models.Hitbox.HitboxLiveStreams;
-import com.moodappinc.streamappa.Assets.Models.Twitch.GamesModel;
-import com.moodappinc.streamappa.Assets.Models.Twitch.TopChannelsModel;
+import com.moodappinc.streamappa.InnerLayer.Models.Hitbox.HitboxLiveStreams;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.GamesModel;
+import com.moodappinc.streamappa.InnerLayer.Models.Twitch.TopChannelsModel;
 import com.moodappinc.streamappa.R;
 import com.squareup.picasso.Picasso;
 
